@@ -7,6 +7,8 @@ const mongoose = require("mongoose");
 
 require("dotenv").config();
 
+const authRoutes = require("./routes/auth");
+
 // app
 const app = express();
 
@@ -26,6 +28,9 @@ if ((process.env.NODE_ENV = "development")) {
 }
 
 // routes
+
+app.use("/api", authRoutes);
+
 app.get("/api", (req, res) => {
   res.json({ time: Date().toString() });
 });
